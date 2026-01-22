@@ -7,6 +7,8 @@ import { Menu } from 'lucide-react';
 
 import { SearchBar } from '@/shared/ui/search-bar';
 
+import { logout } from '@/features/auth/model';
+import { useAuthStatus } from '@/features/auth/model';
 import { ThemeSwitcher } from '@/features/theme-switcher/ui';
 import { NavLinks, UserMenu } from '@/widgets/header/ui';
 import { MobileMenu } from '@/widgets/header/ui';
@@ -19,11 +21,7 @@ export function Header() {
     setMobileOpen((prev) => !prev);
   };
 
-  const isAuth = true;
-
-  const logout = () => {
-    console.log('logout');
-  };
+  const { isAuth } = useAuthStatus();
 
   const handleSearchSubmit = () => {
     console.log('handleSubmit');

@@ -21,7 +21,7 @@ export const NavActions = ({ onSelect, counts }: NavActionsProps) => {
         {shopActionsLinks.map((link) => (
           <NavigationMenuItem key={link.id}>
             <NavigationMenuLink asChild className="flex-row items-center gap-2">
-              <div className="flex items-center gap-2">
+              <div>
                 <NavElement
                   link={link}
                   showIcon
