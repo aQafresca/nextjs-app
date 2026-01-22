@@ -20,7 +20,7 @@ export const UserMenu = ({ isAuth, logout }: IUserMenuProps) => {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger className="flex items-center gap-1">
+      <DropdownMenuTrigger className="flex items-center gap-1 cursor-pointer hover:text-black">
         <User />
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
