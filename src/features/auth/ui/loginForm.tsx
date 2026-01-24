@@ -7,7 +7,7 @@ import { ButtonLabel, PLACEHOLDERS, ROUTES } from '@/shared/constants';
 import { handleFormError } from '@/shared/lib/errors/form/handleFormError';
 import { Button } from '@/shared/ui/button';
 import { FormError } from '@/shared/ui/error';
-import { FormInput } from '@/shared/ui/fields/form';
+import { FormInput } from '@/shared/ui/fields/formInput';
 import { Form } from '@/shared/ui/form';
 
 import { login } from '@/features/auth/model/login';
