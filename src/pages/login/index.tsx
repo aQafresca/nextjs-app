@@ -6,9 +6,7 @@ import { LoginForm } from '@/features/auth/ui';
 
 export const LoginPage = () => {
   return (
-    <div
-      className={'flex flex-grow flex-col items-center justify-center gap-1'}
-    >
+    <div className={'flex grow flex-col items-center justify-center gap-1'}>
       <div className={'w-full max-w-lg'}>
         <h1>Login</h1>
         <Link
