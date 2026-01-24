@@ -28,7 +28,14 @@ export const COOKIE_KEYS = {
 
 export const PLACEHOLDERS = {
   USERNAME: 'example',
+  LASTNAME: 'example',
   PASSWORD: '*********',
+  EMAIL: 'example@gmail.com',
+  CITY: 'city',
+  COUNTRY: 'country',
+  STREET: 'street',
+  ZIP: 'ZIP code (4-5 digits)',
+  PHONE: '+375(29)2234466',
 };
 
 export const AppErrorKind = {
