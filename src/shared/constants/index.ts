@@ -7,6 +7,7 @@ export const ENDPOINTS_URL = {
   AUTH: '/auth/login',
   ME: '/auth/me',
   PRODUCTS: '/products',
+  PRODUCTS_SEARCH: '/products/search',
 };
 
 export const ROUTES = {
