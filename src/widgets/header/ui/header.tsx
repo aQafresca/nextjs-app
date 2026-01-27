@@ -28,7 +28,7 @@ export function Header() {
   };
 
   return (
-    <header className="flex items-center w-full h-[80px] bg-primary text-white dark:bg-chart-5">
+    <header className="flex items-center w-full h-20 bg-primary text-white dark:bg-chart-5">
       <div className="container flex items-center justify-between mx-auto p-4">
         <div className="flex items-center gap-3 md:gap-6">
           <Link href="/" className="flex items-center justify-center">
