@@ -8,12 +8,13 @@ export const authService = {
   login: (credentials: TAuthRequest) =>
     client<TLoginResponse>({
       endpoint: ENDPOINTS_URL.AUTH,
-      options: { method: 'POST', body: JSON.stringify(credentials) },
+      method: 'POST',
+      body: credentials,
     }),
 
   me: () =>
     client<TLoginResponse>({
       endpoint: ENDPOINTS_URL.ME,
-      options: { method: 'GET' },
+      method: 'GET',
     }),
 };
