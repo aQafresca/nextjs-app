@@ -4,15 +4,18 @@ import { AppErrorKind } from '@/shared/constants';
 import { AppError } from '@/shared/lib/errors/form';
 import { tokenStorage } from '@/shared/lib/storage';
 
-interface IClientProps {
+interface IClientProps<TBody = unknown> extends Omit<RequestInit, 'body'> {
   endpoint: string;
-  options?: RequestInit;
+  params?: Record<string, string | number | boolean | undefined>;
+  body?: TBody;
 }
 
-export async function client<T>({
+export async function client<TResponse, TBody = unknown>({
   endpoint,
-  options,
-}: IClientProps): Promise<T> {
+  params,
+  body,
+  ...options
+}: IClientProps<TBody>): Promise<TResponse> {
   const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
 
   if (!baseUrl) {
@@ -22,12 +25,25 @@ export async function client<T>({
     });
   }
 
-  const headers = new Headers(options?.headers);
+  const url = new URL(`${baseUrl}${endpoint}`);
 
-  const isStringBody = typeof options?.body === 'string';
+  if (params) {
+    Object.entries(params).forEach(([key, value]) => {
+      if (value !== undefined) url.searchParams.append(key, String(value));
+    });
+  }
 
-  if (isStringBody && !headers.has('Content-Type')) {
-    headers.set('Content-Type', 'application/json');
+  const headers = new Headers(options.headers);
+
+  let requestBody: BodyInit | undefined = undefined;
+
+  if (body !== undefined) {
+    if (typeof body === 'object') {
+      requestBody = JSON.stringify(body);
+      headers.set('Content-Type', 'application/json');
+    } else {
+      requestBody = String(body);
+    }
   }
 
   const token = tokenStorage.get();
@@ -39,9 +55,10 @@ export async function client<T>({
   let response: Response;
 
   try {
-    response = await fetch(`${baseUrl}${endpoint}`, {
+    response = await fetch(url.toString(), {
       ...options,
       headers,
+      body: requestBody,
     });
   } catch (error) {
     throw new AppError({
@@ -69,5 +86,5 @@ export async function client<T>({
     throw mapHttpError(response.status, errorData);
   }
 
-  return parsed as T;
+  return parsed as TResponse;
 }
