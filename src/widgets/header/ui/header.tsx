@@ -1,10 +1,11 @@
 'use client';
 
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Menu } from 'lucide-react';
 
+import { Loader } from '@/shared/ui/loader';
 import { SearchBar } from '@/shared/ui/search-bar';
 
 import { logout } from '@/features/auth/model';
@@ -37,7 +38,9 @@ export function Header() {
               height={40}
             />
           </Link>
-          <SearchBar onSubmit={handleSearchSubmit} defaultValue={query} />
+          <Suspense fallback={<Loader />}>
+            <SearchBar onSubmit={handleSearchSubmit} defaultValue={query} />1
+          </Suspense>
         </div>
 
         <div className="hidden md:flex items-center gap-2">
