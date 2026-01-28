@@ -4,4 +4,5 @@ export { NavActions } from './navActions';
 export { NavElement } from './navElement';
 export { NavLinks } from './navLinks';
 export { renderNavIcon } from './renderNavIcon';
+export { SearchSection } from './searchSection';
 export { UserMenu } from './userMenu';

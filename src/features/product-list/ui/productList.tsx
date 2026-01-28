@@ -5,10 +5,18 @@ import { productsService } from '@/entities/products/api';
 import { ProductCard } from '@/entities/products/ui';
 import type { IProductListProps } from '@/features/product-list/model';
 
-export const ProductList = async ({ page, pageSize }: IProductListProps) => {
+export const ProductList = async ({
+  page,
+  pageSize,
+  query,
+}: IProductListProps) => {
   const skip = (page - 1) * pageSize;
 
-  const data = await productsService.getAllProducts({ skip, limit: pageSize });
+  const data = await productsService.getAllProducts({
+    skip,
+    limit: pageSize,
+    query,
+  });
   const { total, products } = data;
 
   const totalPages = Math.ceil(total / pageSize);
@@ -22,7 +30,11 @@ export const ProductList = async ({ page, pageSize }: IProductListProps) => {
         'flex-1 flex flex-col items-center justify-between gap-6 mx-auto w-full py-6'
       }
     >
-      {isOutOfRange ? <EmptyState message={'No products found'} /> : null}
+      {isTotalEmpty ? (
+        <EmptyState message={`product "${String(query)}" not found`} />
+      ) : null}
+
+      {isOutOfRange ? <EmptyState message={'Page not founded'} /> : null}
 
       {!isTotalEmpty && !isOutOfRange && (
         <>

@@ -1,3 +1,5 @@
+'use client';
+
 import { Field, FieldLabel } from '@/shared/ui/field';
 import { useForm } from 'react-hook-form';
 import { Search } from 'lucide-react';
@@ -8,6 +10,7 @@ interface ISearchBarProps {
   onSubmit: (query: string) => void;
   placeholder?: string;
   label?: string;
+  defaultValue?: string;
 }
 
 interface ISearchFormValues {
@@ -18,12 +21,13 @@ export const SearchBar = ({
   onSubmit,
   placeholder,
   label,
+  defaultValue,
 }: ISearchBarProps) => {
   const inputId = useId();
 
   const { register, handleSubmit } = useForm<ISearchFormValues>({
     defaultValues: {
-      query: '',
+      query: defaultValue,
     },
   });
 

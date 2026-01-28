@@ -48,3 +48,8 @@ export const AppErrorKind = {
   SERVER: 'SERVER',
   UNKNOWN: 'UNKNOWN',
 } as const;
+
+export const PARAMS_NAME = {
+  QUERY: 'query',
+  PAGE: 'page',
+};

@@ -1,16 +1,16 @@
 'use client';
 
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Menu } from 'lucide-react';
 
-import { SearchBar } from '@/shared/ui/search-bar';
+import { Loader } from '@/shared/ui/loader';
 
 import { logout } from '@/features/auth/model';
 import { useAuthStatus } from '@/features/auth/model';
 import { ThemeSwitcher } from '@/features/theme-switcher/ui';
-import { NavLinks, UserMenu } from '@/widgets/header/ui';
+import { NavLinks, SearchSection, UserMenu } from '@/widgets/header/ui';
 import { MobileMenu } from '@/widgets/header/ui';
 import { NavActions } from '@/widgets/header/ui';
 
@@ -22,10 +22,6 @@ export function Header() {
   };
 
   const { isAuth } = useAuthStatus();
-
-  const handleSearchSubmit = () => {
-    console.log('handleSubmit');
-  };
 
   return (
     <header className="flex items-center w-full h-20 bg-primary text-white dark:bg-chart-5">
@@ -39,7 +35,9 @@ export function Header() {
               height={40}
             />
           </Link>
-          <SearchBar onSubmit={handleSearchSubmit} />
+          <Suspense fallback={<Loader />}>
+            <SearchSection />
+          </Suspense>
         </div>
 
         <div className="hidden md:flex items-center gap-2">
