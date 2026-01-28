@@ -9,6 +9,7 @@ export const ProductList = async ({
   page,
   pageSize,
   query,
+  category,
 }: IProductListProps) => {
   const skip = (page - 1) * pageSize;
 
@@ -16,6 +17,7 @@ export const ProductList = async ({
     skip,
     limit: pageSize,
     query,
+    category,
   });
   const { total, products } = data;
 
@@ -27,7 +29,7 @@ export const ProductList = async ({
   return (
     <div
       className={
-        'flex-1 flex flex-col items-center justify-between gap-6 mx-auto w-full py-6'
+        'flex-1 flex flex-col items-center justify-between gap-6 mx-auto w-full pb-6'
       }
     >
       {isTotalEmpty ? (

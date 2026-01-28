@@ -23,6 +23,7 @@ export interface IFetchProductsParams {
   limit?: number;
   skip?: number;
   query?: string;
+  category?: string;
 }
 
 export interface IProductCardProps {
