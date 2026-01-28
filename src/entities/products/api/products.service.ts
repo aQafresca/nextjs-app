@@ -15,7 +15,7 @@ export const productsService = {
     return client<IProductsResponse>({
       endpoint,
       params: {
-        query,
+        q: query,
         skip,
         limit,
       },
