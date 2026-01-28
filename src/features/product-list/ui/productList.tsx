@@ -30,7 +30,11 @@ export const ProductList = async ({
         'flex-1 flex flex-col items-center justify-between gap-6 mx-auto w-full py-6'
       }
     >
-      {isOutOfRange ? <EmptyState message={'No products found'} /> : null}
+      {isTotalEmpty ? (
+        <EmptyState message={`product "${String(query)}" not found`} />
+      ) : null}
+
+      {isOutOfRange ? <EmptyState message={'Page not founded'} /> : null}
 
       {!isTotalEmpty && !isOutOfRange && (
         <>
