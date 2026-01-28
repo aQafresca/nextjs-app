@@ -10,8 +10,10 @@ export function useSearchHandler() {
   const handleSearchSubmit = (newQuery: string) => {
     const params = new URLSearchParams(searchParams?.toString());
 
-    if (newQuery) params.set(PARAMS_NAME.QUERY, newQuery);
-    else params.delete(PARAMS_NAME.QUERY);
+    if (newQuery) {
+      params.set(PARAMS_NAME.QUERY, newQuery);
+      params.delete(PARAMS_NAME.CATEGORY);
+    } else params.delete(PARAMS_NAME.QUERY);
 
     params.set(PARAMS_NAME.PAGE, '1');
 
