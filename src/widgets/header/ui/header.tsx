@@ -6,13 +6,11 @@ import Link from 'next/link';
 import { Menu } from 'lucide-react';
 
 import { Loader } from '@/shared/ui/loader';
-import { SearchBar } from '@/shared/ui/search-bar';
 
 import { logout } from '@/features/auth/model';
 import { useAuthStatus } from '@/features/auth/model';
-import { useSearchHandler } from '@/features/search/model';
 import { ThemeSwitcher } from '@/features/theme-switcher/ui';
-import { NavLinks, UserMenu } from '@/widgets/header/ui';
+import { NavLinks, SearchSection, UserMenu } from '@/widgets/header/ui';
 import { MobileMenu } from '@/widgets/header/ui';
 import { NavActions } from '@/widgets/header/ui';
 
@@ -24,7 +22,6 @@ export function Header() {
   };
 
   const { isAuth } = useAuthStatus();
-  const { handleSearchSubmit, query } = useSearchHandler();
 
   return (
     <header className="flex items-center w-full h-20 bg-primary text-white dark:bg-chart-5">
@@ -39,7 +36,7 @@ export function Header() {
             />
           </Link>
           <Suspense fallback={<Loader />}>
-            <SearchBar onSubmit={handleSearchSubmit} defaultValue={query} />1
+            <SearchSection />
           </Suspense>
         </div>
 
