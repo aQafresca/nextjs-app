@@ -1,3 +1,5 @@
+'use client';
+
 import { SearchBar } from '@/shared/ui/search-bar';
 
 import { useSearchHandler } from '@/features/search/model';

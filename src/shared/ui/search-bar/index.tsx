@@ -1,3 +1,5 @@
+'use client';
+
 import { Field, FieldLabel } from '@/shared/ui/field';
 import { useForm } from 'react-hook-form';
 import { Search } from 'lucide-react';
