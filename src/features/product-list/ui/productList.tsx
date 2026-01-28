@@ -5,10 +5,18 @@ import { productsService } from '@/entities/products/api';
 import { ProductCard } from '@/entities/products/ui';
 import type { IProductListProps } from '@/features/product-list/model';
 
-export const ProductList = async ({ page, pageSize }: IProductListProps) => {
+export const ProductList = async ({
+  page,
+  pageSize,
+  query,
+}: IProductListProps) => {
   const skip = (page - 1) * pageSize;
 
-  const data = await productsService.getAllProducts({ skip, limit: pageSize });
+  const data = await productsService.getAllProducts({
+    skip,
+    limit: pageSize,
+    query,
+  });
   const { total, products } = data;
 
   const totalPages = Math.ceil(total / pageSize);
