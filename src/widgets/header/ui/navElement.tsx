@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import { assertNever } from '@/shared/lib/assertNever';
+import { assertNever } from '@/shared/lib/utils/assertNever';
 
 import type { TNavItem } from '@/widgets/header/model';
 import { renderNavIcon } from '@/widgets/header/ui/renderNavIcon';
