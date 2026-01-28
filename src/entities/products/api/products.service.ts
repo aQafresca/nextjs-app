@@ -1,19 +1,15 @@
 import { client } from '@/shared/api';
-import { ENDPOINTS_URL } from '@/shared/constants';
 
+import { resolveEndpoint } from '@/entities/products/api';
 import type {
   IFetchProductsParams,
   IProductsResponse,
 } from '@/entities/products/model';
 
 export const productsService = {
-  getAllProducts: ({ query, skip, limit }: IFetchProductsParams) => {
-    const endpoint = query
-      ? ENDPOINTS_URL.PRODUCTS_SEARCH
-      : ENDPOINTS_URL.PRODUCTS;
-
+  getAllProducts: ({ query, skip, limit, category }: IFetchProductsParams) => {
     return client<IProductsResponse>({
-      endpoint,
+      endpoint: resolveEndpoint({ query, category }),
       params: {
         q: query,
         skip,
