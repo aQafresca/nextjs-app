@@ -9,6 +9,7 @@ import { SearchBar } from '@/shared/ui/search-bar';
 
 import { logout } from '@/features/auth/model';
 import { useAuthStatus } from '@/features/auth/model';
+import { useSearchHandler } from '@/features/search/model';
 import { ThemeSwitcher } from '@/features/theme-switcher/ui';
 import { NavLinks, UserMenu } from '@/widgets/header/ui';
 import { MobileMenu } from '@/widgets/header/ui';
@@ -22,10 +23,7 @@ export function Header() {
   };
 
   const { isAuth } = useAuthStatus();
-
-  const handleSearchSubmit = () => {
-    console.log('handleSubmit');
-  };
+  const { handleSearchSubmit, query } = useSearchHandler();
 
   return (
     <header className="flex items-center w-full h-20 bg-primary text-white dark:bg-chart-5">
@@ -39,7 +37,7 @@ export function Header() {
               height={40}
             />
           </Link>
-          <SearchBar onSubmit={handleSearchSubmit} />
+          <SearchBar onSubmit={handleSearchSubmit} defaultValue={query} />
         </div>
 
         <div className="hidden md:flex items-center gap-2">
