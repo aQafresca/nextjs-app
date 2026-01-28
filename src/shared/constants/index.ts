@@ -8,6 +8,8 @@ export const ENDPOINTS_URL = {
   ME: '/auth/me',
   PRODUCTS: '/products',
   PRODUCTS_SEARCH: '/products/search',
+  PRODUCTS_CATEGORIES: '/products/categories',
+  PRODUCTS_CATEGORY: '/products/category',
 };
 
 export const ROUTES = {
@@ -52,4 +54,5 @@ export const AppErrorKind = {
 export const PARAMS_NAME = {
   QUERY: 'query',
   PAGE: 'page',
+  CATEGORY: 'category',
 };
