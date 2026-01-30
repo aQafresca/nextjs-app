@@ -40,7 +40,7 @@ export const RegistrationForm = () => {
     <Form {...form}>
       <form
         onSubmit={(e) => void form.handleSubmit(onSubmit)(e)}
-        className={' w-full flex flex-col border border-input rounded-lg p-4'}
+        className={' w-full flex flex-col border border-border rounded-lg p-4'}
       >
         <FormError className={'min-h-8'} error={form.formState.errors.root} />
         <div className={'flex w-full gap-4 max-md:flex-col'}>
