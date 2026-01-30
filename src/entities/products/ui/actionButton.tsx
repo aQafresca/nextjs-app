@@ -4,13 +4,13 @@ import React from 'react';
 
 import { Button } from '@/shared/ui/button';
 
-interface Props {
+interface IProps {
   icon: React.ReactNode;
   onClick: () => void;
   className?: string;
 }
 
-export const ActionButton = ({ icon, onClick, className = '' }: Props) => (
+export const ActionButton = ({ icon, onClick, className = '' }: IProps) => (
   <Button
     size="icon"
     variant={'ghost'}
