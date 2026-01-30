@@ -17,6 +17,7 @@ interface IMobileMenuProps {
   onClose: (open: boolean) => void;
   isAuth: boolean;
   logout: () => void;
+  counts?: Record<string, number>;
 }
 
 export const MobileMenu = ({
@@ -24,6 +25,7 @@ export const MobileMenu = ({
   onClose,
   isAuth,
   logout,
+  counts,
 }: IMobileMenuProps) => {
   const links = navMobileMenuLinks(isAuth);
   const handleSelect = () => {
@@ -40,7 +42,7 @@ export const MobileMenu = ({
               Navigation menu for mobile users
             </SheetDescription>
             <ThemeSwitcher />
-            <NavActions onSelect={handleSelect} />
+            <NavActions onSelect={handleSelect} counts={counts} />
           </div>
         </SheetHeader>
 

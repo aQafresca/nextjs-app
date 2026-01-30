@@ -4,15 +4,24 @@ import Link from 'next/link';
 import { ENDPOINTS_URL } from '@/shared/constants';
 import { calculateDiscountedPrice } from '@/shared/lib/utils/calculateDiscountedPrice';
 
+import type { ICartItem } from '@/entities/cart/model';
 import type { IProductCardProps } from '@/entities/products/model';
 import { PriceDisplay } from '@/entities/products/ui';
-import { ToggleAddToCart } from '@/entities/products/ui';
+import { AddToCart } from '@/entities/products/ui';
 import { ToggleAddToFavorite } from '@/entities/products/ui';
 
 export const ProductCard = ({ product, isPriority }: IProductCardProps) => {
   const { id, price, title, discountPercentage, images } = product;
   const finalPrice = calculateDiscountedPrice(price, discountPercentage);
   const hasDiscount = discountPercentage > 0;
+
+  const cartItemDto: ICartItem = {
+    id,
+    title,
+    price: finalPrice,
+    quantity: 1,
+    thumbnail: images[0],
+  };
 
   return (
     <Link
@@ -39,9 +48,9 @@ export const ProductCard = ({ product, isPriority }: IProductCardProps) => {
           <PriceDisplay
             price={price}
             hasDiscount={hasDiscount}
-            finalPrice={finalPrice}
+            finalPrice={String(finalPrice)}
           />
-          <ToggleAddToCart productId={id} />
+          <AddToCart cartItem={cartItemDto} />
         </li>
       </ul>
     </Link>

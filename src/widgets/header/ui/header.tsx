@@ -7,6 +7,7 @@ import { Menu } from 'lucide-react';
 
 import { Loader } from '@/shared/ui/loader';
 
+import { useCartStore } from '@/entities/cart/model';
 import { logout } from '@/features/auth/model';
 import { useAuthStatus } from '@/features/auth/model';
 import { ThemeSwitcher } from '@/features/theme-switcher/ui';
@@ -16,6 +17,11 @@ import { NavActions } from '@/widgets/header/ui';
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const cartCount = useCartStore((state) => state.items.length);
+
+  const actionCounts = {
+    cart: cartCount,
+  };
 
   const toggleMenu = () => {
     setMobileOpen((prev) => !prev);
@@ -43,7 +49,7 @@ export function Header() {
         <div className="hidden md:flex items-center gap-2">
           <NavLinks />
           <div className="hidden lg:flex">
-            <NavActions />
+            <NavActions counts={actionCounts} />
           </div>
           <div className="h-6 w-px bg-border mx-1" />
           <ThemeSwitcher />
@@ -63,6 +69,7 @@ export function Header() {
           isOpen={mobileOpen}
           onClose={setMobileOpen}
           logout={logout}
+          counts={actionCounts}
         />
       </div>
     </header>
