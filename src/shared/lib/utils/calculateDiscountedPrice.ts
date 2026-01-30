@@ -1,8 +1,8 @@
 export const calculateDiscountedPrice = (
   price: number,
   discount: number,
-): string => {
+): number => {
   const finalPrice = price * (1 - discount / 100);
 
-  return finalPrice.toFixed(2);
+  return Math.round(finalPrice * 100) / 100;
 };
