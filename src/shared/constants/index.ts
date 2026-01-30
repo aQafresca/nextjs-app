@@ -29,6 +29,10 @@ export const COOKIE_KEYS = {
   TOKEN: 'access_token',
 };
 
+export const LocalStorageKeys = {
+  CART: 'cart - storage',
+};
+
 export const PLACEHOLDERS = {
   USERNAME: 'example',
   LASTNAME: 'example',
