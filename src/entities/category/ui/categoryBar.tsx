@@ -14,8 +14,10 @@ export const CategoryBar = async () => {
   const navigation = buildCategoryNavigation({ apiCategories });
 
   return (
-    <div className="hidden md:block w-full max-w-50 border-r p-4">
-      <h2 className="mb-4 text-lg font-semibold tracking-tight">Categories</h2>
+    <div className="hidden md:block w-full max-w-50 p-4">
+      <h2 className="mb-4 text-sm text-foreground tracking-tight">
+        Categories
+      </h2>
       <Accordion type="multiple" className="w-full">
         {navigation.map((section) => (
           <AccordionItem key={section.label} value={section.label}>

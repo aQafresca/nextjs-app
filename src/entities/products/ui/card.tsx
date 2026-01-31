@@ -26,7 +26,7 @@ export const ProductCard = ({ product, isPriority }: IProductCardProps) => {
   return (
     <Link
       className={
-        'flex flex-col relative w-60 h-93 border border-accent rounded-md transition-transform duration-200 hover:scale-105 shadow-md'
+        'flex flex-col relative w-60 h-93 border border-border rounded-md transition-transform duration-200 hover:scale-105 shadow-md'
       }
       href={`${ENDPOINTS_URL.PRODUCTS}/${String(id)}`}
     >
