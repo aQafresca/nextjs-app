@@ -18,6 +18,25 @@ export type TNavCategoriesGroup =
 
 export const NAV_CATEGORIES: TNavCategoriesGroup[] = [
   {
+    label: 'Men',
+    items: [
+      { label: 'Shirts', slug: 'mens-shirts' },
+      { label: 'Shoes', slug: 'mens-shoes' },
+      { label: 'Watches', slug: 'mens-watches' },
+    ],
+  },
+  {
+    label: 'Women',
+    items: [
+      { label: 'Dresses', slug: 'womens-dresses' },
+      { label: 'Shoes', slug: 'womens-shoes' },
+      { label: 'Watches', slug: 'womens-watches' },
+      { label: 'Bags', slug: 'womens-bags' },
+      { label: 'Jewellery', slug: 'womens-jewellery' },
+    ],
+  },
+
+  {
     label: 'Beauty & Care',
     items: [
       { label: 'Beauty', slug: 'beauty' },
@@ -53,5 +72,12 @@ export const NAV_CATEGORIES: TNavCategoriesGroup[] = [
   {
     label: 'Groceries',
     items: [{ label: 'Groceries', slug: 'groceries' }],
+  },
+  {
+    label: 'Other',
+    items: [
+      { label: 'Tops', slug: 'tops' },
+      { label: 'Sunglasses', slug: 'sunglasses' },
+    ],
   },
 ];
