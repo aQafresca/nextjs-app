@@ -1,4 +1,4 @@
-import { BreadCrumbs } from '@/entities/bread-crumbs/ui';
+import { BreadCrumbs } from '@/entities/bread-crumb/ui';
 import { CategoryBar } from '@/entities/category/ui';
 import { FilterPanel } from '@/entities/filter-panel/ui';
 import type { IProductListProps } from '@/features/product-list/model';
