@@ -10,7 +10,7 @@ export const CategoryLink = ({ item }: CategoryLinkProps) => {
   return (
     <Link
       href={href}
-      className="text-sm text-muted-foreground hover:text-primary transition-colors py-1"
+      className="text-sm dark:text-muted-foreground hover:text-primary transition-colors py-1"
     >
       {item.label}
     </Link>
