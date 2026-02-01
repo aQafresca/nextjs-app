@@ -10,6 +10,8 @@ export const ProductList = async ({
   pageSize,
   query,
   category,
+  sortBy,
+  order,
 }: IProductListProps) => {
   const skip = (page - 1) * pageSize;
 
@@ -18,6 +20,8 @@ export const ProductList = async ({
     limit: pageSize,
     query,
     category,
+    sortBy,
+    order,
   });
   const { total, products } = data;
 
