@@ -1,10 +1,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { ENDPOINTS_URL } from '@/shared/constants';
+import { ROUTES } from '@/shared/constants';
 import { calculateDiscountedPrice } from '@/shared/lib/utils/calculateDiscountedPrice';
 
-import type { ICartItem } from '@/entities/cart/model';
+import { mapProductToCartItem } from '@/entities/cart/model';
 import type { IProductCardProps } from '@/entities/products/model';
 import { PriceDisplay } from '@/entities/products/ui';
 import { AddToCart } from '@/entities/products/ui';
@@ -15,20 +15,14 @@ export const ProductCard = ({ product, isPriority }: IProductCardProps) => {
   const finalPrice = calculateDiscountedPrice(price, discountPercentage);
   const hasDiscount = discountPercentage > 0;
 
-  const cartItemDto: ICartItem = {
-    id,
-    title,
-    price: finalPrice,
-    quantity: 1,
-    thumbnail: images[0],
-  };
+  const cartItemDto = mapProductToCartItem(product, finalPrice);
 
   return (
     <Link
       className={
         'flex flex-col relative w-60 h-93 border border-border rounded-md transition-transform duration-200 hover:scale-105 shadow-md'
       }
-      href={`${ENDPOINTS_URL.PRODUCTS}/${String(id)}`}
+      href={`${ROUTES.DETAIL}/${String(id)}`}
     >
       <Image
         src={images[0]}
@@ -48,7 +42,7 @@ export const ProductCard = ({ product, isPriority }: IProductCardProps) => {
           <PriceDisplay
             price={price}
             hasDiscount={hasDiscount}
-            finalPrice={String(finalPrice)}
+            finalPrice={finalPrice}
           />
           <AddToCart cartItem={cartItemDto} />
         </li>

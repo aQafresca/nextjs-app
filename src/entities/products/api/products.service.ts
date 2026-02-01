@@ -1,8 +1,10 @@
 import { client } from '@/shared/api';
+import { ENDPOINTS_URL } from '@/shared/constants';
 
 import { resolveEndpoint } from '@/entities/products/api';
 import type {
   IFetchProductsParams,
+  IProduct,
   IProductsResponse,
 } from '@/entities/products/model';
 
@@ -15,6 +17,12 @@ export const productsService = {
         skip,
         limit,
       },
+    });
+  },
+  getProductById: (id: string) => {
+    return client<IProduct>({
+      endpoint: `${ENDPOINTS_URL.PRODUCTS}/${id}`,
+      method: 'GET',
     });
   },
 };

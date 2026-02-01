@@ -1,4 +1,5 @@
 export interface IProductListPromiseProps {
+  params: Promise<{ id: string }>;
   searchParams: Promise<{
     page?: string;
     pageSize?: string;

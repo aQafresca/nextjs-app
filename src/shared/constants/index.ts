@@ -16,7 +16,7 @@ export const ROUTES = {
   HOME: '/',
   LOGIN: '/login',
   REGISTRATION: '/registration',
-  DETAIL: '/products',
+  DETAIL: '/product',
   PROFILE: '/profile',
   MERCHANT: '/merchant',
   SHOPS: '/shops',
