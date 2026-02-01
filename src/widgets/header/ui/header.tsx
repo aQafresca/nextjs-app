@@ -8,6 +8,7 @@ import { Menu } from 'lucide-react';
 import { Loader } from '@/shared/ui/loader';
 
 import { useCartStore } from '@/entities/cart/model';
+import { useFavoriteStore } from '@/entities/favorites/model';
 import { logout } from '@/features/auth/model';
 import { useAuthStatus } from '@/features/auth/model';
 import { ThemeSwitcher } from '@/features/theme-switcher/ui';
@@ -18,9 +19,11 @@ import { NavActions } from '@/widgets/header/ui';
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const cartCount = useCartStore((state) => state.items.length);
+  const favoriteCount = useFavoriteStore((state) => state.items.length);
 
   const actionCounts = {
     cart: cartCount,
+    favorites: favoriteCount,
   };
 
   const toggleMenu = () => {

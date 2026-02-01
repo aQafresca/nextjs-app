@@ -38,7 +38,7 @@ export const CartList = ({
   };
 
   return (
-    <Table className="max-w-[900px] mx-auto">
+    <Table className="max-w-225 mx-auto">
       <TableHeader>
         <TableRow>
           <TableHead className="w-10">

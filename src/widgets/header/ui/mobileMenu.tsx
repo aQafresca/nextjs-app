@@ -34,7 +34,7 @@ export const MobileMenu = ({
 
   return (
     <Sheet open={isOpen} onOpenChange={onClose}>
-      <SheetContent side="right" className="w-[85vw] sm:max-w-[400px]">
+      <SheetContent side="right" className="w-[85vw] sm:max-w-100">
         <SheetHeader className="flex">
           <div className="flex items-center gap-4">
             <SheetTitle>Menu</SheetTitle>

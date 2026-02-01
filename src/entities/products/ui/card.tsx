@@ -33,7 +33,7 @@ export const ProductCard = ({ product, isPriority }: IProductCardProps) => {
         loading={isPriority ? 'eager' : 'lazy'}
         className="w-60 h-67.5 object-cover"
       />
-      <ToggleAddToFavorite productId={id} />
+      <ToggleAddToFavorite product={product} />
       <ul className={'flex flex-col gap-3 p-3'}>
         <li>
           <h3 className={'text-center'}>{title}</h3>
