@@ -1,6 +1,6 @@
 interface PriceDisplayProps {
   price: number;
-  finalPrice: string;
+  finalPrice: number;
   hasDiscount: boolean;
 }
 
