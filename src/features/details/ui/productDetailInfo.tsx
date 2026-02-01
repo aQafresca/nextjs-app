@@ -27,7 +27,7 @@ export const ProductDetailInfo = async ({ productId }: IDetailsProductId) => {
   const cartItemDto = mapProductToCartItem(data, finalPrice);
 
   return (
-    <div className={'flex flex-col gap-5 py-5'}>
+    <div className={'flex flex-col gap-5'}>
       <div className="flex flex-col gap-6 items-center sm:flex-row sm:items-center">
         <div className={'flex flex-col items-center justify-between w-ful'}>
           <Image
