@@ -31,6 +31,7 @@ export const COOKIE_KEYS = {
 
 export const LocalStorageKeys = {
   CART: 'cart - storage',
+  FAVORITES: 'favorites',
 };
 
 export const PLACEHOLDERS = {
