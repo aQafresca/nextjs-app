@@ -22,7 +22,7 @@ export const FavoritesList = () => {
     return <EmptyState message="Your favorites list is empty" />;
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+    <div className="grid grid-cols-1 mx-auto sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
       {items.map((product) => (
         <ProductCard key={product.id} product={product} />
       ))}
