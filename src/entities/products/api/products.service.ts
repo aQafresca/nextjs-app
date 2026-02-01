@@ -9,13 +9,22 @@ import type {
 } from '@/entities/products/model';
 
 export const productsService = {
-  getAllProducts: ({ query, skip, limit, category }: IFetchProductsParams) => {
+  getAllProducts: ({
+    query,
+    skip,
+    limit,
+    category,
+    sortBy,
+    order,
+  }: IFetchProductsParams) => {
     return client<IProductsResponse>({
       endpoint: resolveEndpoint({ query, category }),
       params: {
         q: query,
         skip,
         limit,
+        sortBy,
+        order,
       },
     });
   },

@@ -57,6 +57,8 @@ export interface IFetchProductsParams {
   skip?: number;
   query?: string;
   category?: string;
+  sortBy?: string;
+  order?: string;
 }
 
 export interface IProductCardProps {
