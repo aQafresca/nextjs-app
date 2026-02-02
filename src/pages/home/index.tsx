@@ -1,7 +1,7 @@
 import { BreadCrumbs } from '@/entities/bread-crumb/ui';
 import { CategoryBar } from '@/entities/category/ui';
 import { FilterPanel } from '@/entities/filter-panel/ui';
-import { PriceSort } from '@/entities/sort/ui/priceSort';
+import { SortPanel } from '@/entities/sort-panel/ui/sortPanel';
 import type { IProductListProps } from '@/features/product-list/model';
 import { ProductList } from '@/features/product-list/ui';
 
@@ -20,7 +20,7 @@ export const HomePage = ({
         <CategoryBar />
         <div className={'flex flex-col gap-5'}>
           <BreadCrumbs />
-          <PriceSort currentOrder={order} />
+          <SortPanel sortBy={sortBy} order={order} />
           <ProductList
             page={page}
             pageSize={pageSize}

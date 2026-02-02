@@ -1,34 +1,14 @@
 'use client';
 
-import { useRouter, useSearchParams } from 'next/navigation';
-
+import { useSort } from '@/shared/lib/sort/useSort';
 import { Button } from '@/shared/ui/button';
 
 import { SORT_OPTIONS } from '@/entities/sort/model/constants';
-import type { TSortOrder } from '@/features/product-list/model';
+import type { ISortParams } from '@/entities/sort-panel/model/types';
 
-interface PriceSortProps {
-  currentOrder?: TSortOrder;
-}
-
-export const PriceSort = ({ currentOrder }: PriceSortProps) => {
-  const router = useRouter();
-  const searchParams = useSearchParams();
-
-  const setSort = (order: TSortOrder | null) => {
-    const params = new URLSearchParams(searchParams?.toString() ?? '');
-
-    if (order) {
-      params.set('sortBy', 'price');
-      params.set('order', order);
-    } else {
-      params.delete('sortBy');
-      params.delete('order');
-    }
-
-    params.set('page', '1');
-    router.push(`?${params.toString()}`, { scroll: false });
-  };
+export const PriceSort = ({ sortBy, order }: ISortParams) => {
+  const isPriceActive = sortBy === 'price';
+  const { updateSort } = useSort();
 
   return (
     <div className="flex items-center gap-4 text-sm">
@@ -38,13 +18,13 @@ export const PriceSort = ({ currentOrder }: PriceSortProps) => {
 
       <div className="flex items-center gap-2">
         {SORT_OPTIONS.map(({ label, value }) => {
-          const isActive = currentOrder === value;
+          const isActive = isPriceActive && order === value;
 
           return (
             <Button
               key={value}
               onClick={() => {
-                setSort(value);
+                updateSort('price', value);
               }}
               variant="ghost"
               size="sm"
@@ -56,19 +36,6 @@ export const PriceSort = ({ currentOrder }: PriceSortProps) => {
             </Button>
           );
         })}
-
-        {!!currentOrder && (
-          <Button
-            onClick={() => {
-              setSort(null);
-            }}
-            variant="ghost"
-            size="sm"
-            className="text-xs text-muted-foreground hover:text-destructive cursor-pointer"
-          >
-            Reset
-          </Button>
-        )}
       </div>
     </div>
   );
